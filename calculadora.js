@@ -1,8 +1,11 @@
 const OPCION_SALIR = 4;
 const IVA = 1.21;
 const INTERES = 1.40;
+const PRECIOPRILIA = 5000
+const PRECIOGUZZI = 8000
+const PRECIOPIAGGIO = 3500
 
-let opcion = parseInt(prompt("Elige la opción que deseas:\n1- Ver Productos\n2- Calcular Cuotas\n3- Calcular IVA\n4- Salir"));
+let opcion = parseInt(prompt("Elige la opción que deseas:\n1- Ver Productos\n2- Calcular Cuotas\n3- Prestamo\n4- Salir"));
 
 while (opcion !== OPCION_SALIR) {
 switch (opcion) {
@@ -13,7 +16,7 @@ switch (opcion) {
     calcularCuotas();
     break;
     case 3:
-    calcularIVA();
+    prestamo();
     break;
     case 4:
     break;
@@ -22,7 +25,7 @@ switch (opcion) {
     break;
 }
 
-opcion = parseInt(prompt("Elige la opción que deseas:\n1- Ver Productos\n2- Calcular Cuotas\n3- Calcular IVA\n4- Salir"));
+opcion = parseInt(prompt("Elige la opción que deseas:\n1- Ver Productos\n2- Calcular Cuotas\n3- Prestamo\n4- Salir"));
 }
 
 function verProductos() {
@@ -72,12 +75,19 @@ function mostrarMotos() {
         }
         opcion = parseInt(prompt("Elige la opción que deseas:\n1- aprilia\n2- moto guzzi\n3- piaggio\n4- volver"));
     }
-    }
+}
 
-function calcularIVA() {
-    const total = parseFloat(prompt("Ingrese el total:"));
-    const resultado = IVA * total;
-    alert("El total es: $" + total + "\n El total con IVA es: $" + resultado);
+function aprilia() {
+    const resultado = IVA * PRECIOPRILIA;
+    alert("El total es: $" + PRECIOPRILIA + "\n El total con IVA es: $" + resultado);
+}
+function motoguzzi() {
+    const resultado = IVA * PRECIOGUZZI;
+    alert("El total es: $" + PRECIOGUZZI + "\n El total con IVA es: $" + resultado);
+}
+function piaggio() {
+    const resultado = IVA * PRECIOPIAGGIO;
+    alert("El total es: $" + PRECIOPIAGGIO + "\n El total con IVA es: $" + resultado);
 }
 
 function calcularCuotas() {
