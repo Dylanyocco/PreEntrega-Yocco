@@ -44,7 +44,7 @@ buttonLogin.addEventListener("click",()=>{
         bienvenidaAlUsuario(usuarioEncontrado.usuario);
         localStorage.setItem("autenticacion", JSON.stringify({ name: usuarioEncontrado.usuario, isLogin: true}));        
     }else{
-        console.log("No crack no existis.")
+        console.log("Usuario Incorrecto")
     }
 });
 
