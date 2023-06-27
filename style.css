@@ -2,15 +2,32 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: #20223a;
+
 }
 
 body {
     display: flex;
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
-
+.nav-link{
+    display: flex;
+    list-style-type: none;
+    text-decoration: none;
+}
+.nav-text{
+    color: #1a9b95;
+    list-style-type: none;
+    text-decoration: none;
+    background-color: #0a012750;
+    border-radius: 10px;
+    padding: 10px;
+}
+.nav-text:hover{
+    border: 1px solid rgb(6, 124, 153) ;
+}
 input {
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 8px;
     border-radius: 10px;
     border: 1px solid #7b87aa00;
@@ -19,13 +36,14 @@ input {
 
 input:focus{
     outline: none;
-    border: 1px solid #727c9400;
+    border: 1px solid #1a419b;
     padding: 12px;
-
 }
+
 input:hover{
     padding: 12px;
-    transition: 0.4s;
+    transition: 0.5s;
+    border: 1px solid #1a419b;
 }
 
 label {
@@ -34,24 +52,26 @@ label {
 }
 
 button {
-    padding: 12px;
-    background: #000308d3;
-    border: none;
+    padding: 15px;
+    background: #0003083f;
     color: #678fee9d;
     width: 25%;
+    border: none;
     border-radius: 8px;
     align-self: center;
     cursor: pointer;
     font-weight: 700;
 }
 
+button:hover{
+    border:1px solid slateblue;
+}
+
 #app{
-    background-color: #20223a;
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .login-container {
@@ -64,7 +84,7 @@ button {
     border: 1px solid #004cff;
     border-radius: 10px;
     background-color: #132330;
-    box-shadow: 5px 7px rgba(120, 1, 255, 0.568)
+    box-shadow: 5px 7px rgba(120, 1, 255, 0.568);
 }
 
 .title {

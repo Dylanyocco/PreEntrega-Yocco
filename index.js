@@ -30,21 +30,17 @@ if(isAuth === null){
     isAuth = { isLogin : false }
 }
 
-const bienvenidaAlUsuario = nombre => {
-    app.innerHTML = `<h1 class='title'>Bienvenido sr/sra ${nombre}</h1>`
-}
-
-if(isAuth.isLogin){
-    bienvenidaAlUsuario(isAuth.name);
+const UsuarioCorrecto = () =>{
+window.location.href= 'pages/page1.html'
 }
 
 buttonLogin.addEventListener("click",()=>{
     const usuarioEncontrado = bbdd.find(el => el.usuario === user.usuario && el.contraseña === user.contraseña)
     if(usuarioEncontrado){
-        bienvenidaAlUsuario(usuarioEncontrado.usuario);
+        UsuarioCorrecto(usuarioEncontrado.usuario);
         localStorage.setItem("autenticacion", JSON.stringify({ name: usuarioEncontrado.usuario, isLogin: true}));        
     }else{
-        console.log("Usuario Incorrecto")
+        alert("Usuario Incorrecto")
     }
 });
 
@@ -88,89 +84,89 @@ ArrayDeProductos.push(Aprilia);
 const Aprilia1 = new Productos(idUniversal++,"RSV4",20000,"Deportiva","Aprilia");
 ArrayDeProductos.push(Aprilia1);
 
-const mostrarProductosPorCategoria=(categoria) =>{
-const filtrado = ArrayDeProductos.filter((el)=> el.categoria === categoria);
-let mostrarMensaje='';
-filtrado.forEach((el) => {
-    mostrarMensaje+="\nProducto: " + el.nombre + " " + "\Precio: " + el.precio
-});
-alert(mostrarMensaje)
-}
-let opcion = parseInt(prompt("Elige la opción que deseas:\n1- Ver Productos\n2- Calcular Cuotas\n3- Prestamo\n4- Salir"));
+// const mostrarProductosPorCategoria=(categoria) =>{
+// const filtrado = ArrayDeProductos.filter((el)=> el.categoria === categoria);
+// let mostrarMensaje='';
+// filtrado.forEach((el) => {
+//     mostrarMensaje+="\nProducto: " + el.nombre + " " + "\Precio: " + el.precio
+// });
+// alert(mostrarMensaje)
+// }
+// let opcion = parseInt(prompt("Elige la opción que deseas:\n1- Ver Productos\n2- Calcular Cuotas\n3- Prestamo\n4- Salir"));
 
-while (opcion !== OPCION_SALIR) {
-switch (opcion) {
-case 1:
-verProductos();
-break;
-case 2:
-calcularCuotas();
-break;
-case 3:
-prestamo();
-break;
-case 4:
-break;
-default:
-alert("Ingresaste una opción inválida");
-break;
-}
+// while (opcion !== OPCION_SALIR) {
+// switch (opcion) {
+// case 1:
+// verProductos();
+// break;
+// case 2:
+// calcularCuotas();
+// break;
+// case 3:
+// prestamo();
+// break;
+// case 4:
+// break;
+// default:
+// alert("Ingresaste una opción inválida");
+// break;
+// }
 
-opcion = parseInt(prompt("Elige la opción que deseas:\n1- Ver Productos\n2- Calcular Cuotas\n3- Prestamo\n4- Salir"));
-}
+// opcion = parseInt(prompt("Elige la opción que deseas:\n1- Ver Productos\n2- Calcular Cuotas\n3- Prestamo\n4- Salir"));
+// }
 
-function verProductos() {
-let opcion;
-opcion = parseInt(prompt("Elige la opción que deseas:\n1- Motos\n2- Accesorios\n3- Indumentaria\n4- volver"));
+// function verProductos() {
+// let opcion;
+// opcion = parseInt(prompt("Elige la opción que deseas:\n1- Motos\n2- Accesorios\n3- Indumentaria\n4- volver"));
 
-while (opcion !== OPCION_SALIR) {
-switch (opcion) {
-case 1:
-    mostrarMotos();
-    break;
-case 2:
-    mostrarAccesorios();
-    break;
-case 3:
-    mostrarIndumentaria();
-    break;
-case 4:
-    break;
-default:
-    alert("Ingresaste una opción inválida");
-    break;
-}
-opcion = parseInt(prompt("Elige la opción que deseas:\n1- Motos\n2- Accesorios\n3- Indumentaria\n4- volver"));
-}
-}
-function mostrarMotos() {
-let opcion;
-opcion = parseInt(prompt("Elige la opción que deseas:\n1- aprilia\n2- Royal-Enfield\n3- Vespa\n4- volver"));
+// while (opcion !== OPCION_SALIR) {
+// switch (opcion) {
+// case 1:
+//     mostrarMotos();
+//     break;
+// case 2:
+//     mostrarAccesorios();
+//     break;
+// case 3:
+//     mostrarIndumentaria();
+//     break;
+// case 4:
+//     break;
+// default:
+//     alert("Ingresaste una opción inválida");
+//     break;
+// }
+// opcion = parseInt(prompt("Elige la opción que deseas:\n1- Motos\n2- Accesorios\n3- Indumentaria\n4- volver"));
+// }
+// }
+// function mostrarMotos() {
+// let opcion;
+// opcion = parseInt(prompt("Elige la opción que deseas:\n1- aprilia\n2- Royal-Enfield\n3- Vespa\n4- volver"));
 
-while (opcion !== OPCION_SALIR) {
-    switch (opcion) {
-    case 1:
-        mostrarProductosPorCategoria("Aprilia");
-        break;
-    case 2:
-        mostrarProductosPorCategoria("Royal Enfield");
-        break;
-    case 3:
-        mostrarProductosPorCategoria("Vespa");
-        break;
-    case 4:
-        break;
-    default:
-        alert("Ingresaste una opción inválida");
-        break;
-    }
-    opcion = parseInt(prompt("Elige la opción que deseas:\n1- aprilia\n2- Royal-Enfield\n3- Vespa\n4- volver"));
-}
-}
+// while (opcion !== OPCION_SALIR) {
+//     switch (opcion) {
+//     case 1:
+//         mostrarProductosPorCategoria("Aprilia");
+//         break;
+//     case 2:
+//         mostrarProductosPorCategoria("Royal Enfield");
+//         break;
+//     case 3:
+//         mostrarProductosPorCategoria("Vespa");
+//         break;
+//     case 4:
+//         break;
+//     default:
+//         alert("Ingresaste una opción inválida");
+//         break;
+//     }
+//     opcion = parseInt(prompt("Elige la opción que deseas:\n1- aprilia\n2- Royal-Enfield\n3- Vespa\n4- volver"));
+// }
+// }
 
-function calcularCuotas() {
-const total = parseInt(prompt("Ingrese el total:"));
-const cuotas = parseInt(prompt("Ingrese la cantidad de cuotas:"));
-const resultado = total * INTERES / cuotas;
-alert("El valor de cada cuota es: $" + resultado);
-}
+// function calcularCuotas() {
+// const total = parseInt(prompt("Ingrese el total:"));
+// const cuotas = parseInt(prompt("Ingrese la cantidad de cuotas:"));
+// const resultado = total * INTERES / cuotas;
+// alert("El valor de cada cuota es: $" + resultado);
+// }
