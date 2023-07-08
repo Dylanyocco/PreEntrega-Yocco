@@ -12,14 +12,30 @@ body{
 }
 .nav{
     display: flex;
+    color: #404aa3;
+    gap: 10px;
+}
+#carrito-list{
+    display: flex;
+    padding: 15px;
+    background: #0003083f;
+    color: #678fee9d;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
 }
 .nav-link{
     display: flex;
     list-style-type: none;
     text-decoration: none;
     padding: 15px;
-    gap: 15px;
-    margin-bottom: 15px;
+    background: #0003083f;
+    color: #678fee9d;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
 }
 input {
     color: rgb(255, 255, 255);
