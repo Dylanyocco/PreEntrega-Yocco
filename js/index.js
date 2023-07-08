@@ -1,5 +1,5 @@
 const botonesAgregarAlCarrito = document.getElementsByClassName('boton-item');
-const carrito = [];
+const carrito = obtenerCarritoGuardado();
 const carritoList = document.querySelector('#carrito-list');
 
 
@@ -23,7 +23,19 @@ const producto = {
 
 carrito.push(producto);
 console.log( carrito);
+guardarCarritoEnLocalStorage();
+console.log('Producto agregado al carrito:', producto);
 }
+
+function obtenerCarritoGuardado() {
+const carritoGuardado = localStorage.getItem('carrito');
+return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+}
+
+function guardarCarritoEnLocalStorage() {
+localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
 
 carritoList.addEventListener("click", () => {
     carritoList.innerHTML = '';
