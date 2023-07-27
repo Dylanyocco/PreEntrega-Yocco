@@ -69,3 +69,21 @@ carritoList.addEventListener("click", () => {
     });
 });
 
+function calcularTotalCarrito() {
+    let total = 0;
+    carrito.forEach((producto) => {
+        const precioNumerico = parseFloat(producto.precio.slice(1)); // Convertir el precio a número quitando el signo '$'
+        total += precioNumerico;
+    });
+    return total.toFixed(2); // Redondear el total a 2 decimales
+}
+function actualizarTotalCarrito() {
+    const totalPrecioElement = document.getElementById('total-precio');
+    const total = calcularTotalCarrito();
+    totalPrecioElement.textContent = total;
+}
+carritoList.addEventListener('click', () => {
+    actualizarTotalCarrito();
+});
+
+actualizarTotalCarrito();

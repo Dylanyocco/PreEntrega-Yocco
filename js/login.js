@@ -44,7 +44,28 @@ inputs.forEach( (elemento) => {
     })
 })
 
+const getRandomUserButton = document.getElementById('get-random-user');
+        const userInfoDiv = document.getElementById('user-info');
 
+        getRandomUserButton.addEventListener('click', () => {
+            fetch('https://randomuser.me/api')
+                .then(response => response.json())
+                .then(data => {
+                    const user = data.results[0];
+                    const name = `${user.name.first} ${user.name.last}`;
+                    const email = user.email;
+                    const picture = user.picture.large;
+                    const userHTML = `
+                        <img src="${picture}" alt="User Picture">
+                        <p><strong>Nombre:</strong> ${name}</p>
+                        <p><strong>Email:</strong> ${email}</p>
+                    `;
+                    userInfoDiv.innerHTML = userHTML;
+                })
+                .catch(error => {
+                    console.error('Error al obtener el usuario aleatorio:', error);
+                });
+        });
 
 
 
