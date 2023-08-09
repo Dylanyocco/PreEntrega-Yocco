@@ -22,8 +22,13 @@ const producto = {
 
 carrito.push(producto);
 guardarCarritoEnLocalStorage();
-console.log('Producto agregado al carrito:', producto);
-
+Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Producto guardado',
+    showConfirmButton: false,
+    timer: 1500
+})
 }
 
 function obtenerCarritoGuardado() {

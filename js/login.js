@@ -31,7 +31,11 @@ buttonLogin.addEventListener("click",()=>{
         UsuarioCorrecto(usuarioEncontrado.usuario);
         localStorage.setItem("autenticacion", JSON.stringify({ name: usuarioEncontrado.usuario, isLogin: true}));        
     }else{
-        alert("Usuario Incorrecto")
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Usuario Incorrecto',
+        })
     }
 });
 
@@ -45,27 +49,35 @@ inputs.forEach( (elemento) => {
 })
 
 const getRandomUserButton = document.getElementById('get-random-user');
-        const userInfoDiv = document.getElementById('user-info');
+const userInfoDiv = document.getElementById('user-info');
 
-        getRandomUserButton.addEventListener('click', () => {
-            fetch('https://randomuser.me/api')
-                .then(response => response.json())
-                .then(data => {
-                    const user = data.results[0];
-                    const name = `${user.name.first} ${user.name.last}`;
-                    const email = user.email;
-                    const picture = user.picture.large;
-                    const userHTML = `
-                        <img src="${picture}" alt="User Picture">
-                        <p><strong>Nombre:</strong> ${name}</p>
-                        <p><strong>Email:</strong> ${email}</p>
-                    `;
-                    userInfoDiv.innerHTML = userHTML;
-                })
-                .catch(error => {
-                    console.error('Error al obtener el usuario aleatorio:', error);
-                });
+getRandomUserButton.addEventListener('click', () => {
+    fetch('https://randomuser.me/api')
+        .then(response => response.json())
+        .then(data => {
+            const user = data.results[0];
+            const firstName = user.name.first;
+            const lastName = user.name.last;
+            const username = `${firstName.toLowerCase()}.${lastName.toLowerCase()}`;
+            const password = generarContrasenaNumericaAleatoria(8);
+            const picture = user.picture.large;
+            const userHTML = `
+                <img src="${picture}" alt="User Picture">
+                <p><strong>Usuario:</strong> ${username}</p>
+                <p><strong>Contraseña:</strong> ${password}</p>
+            `;
+            userInfoDiv.innerHTML = userHTML;
+        })
+        .catch(error => {
+            console.error('Error al obtener el usuario aleatorio:', error);
         });
+});
 
-
-
+function generarContrasenaNumericaAleatoria(longitud) {
+    let contrasena = ''; 
+    for (let i = 0; i < longitud; i++) {
+        const numeroAleatorio = Math.floor(Math.random() * 10);
+        contrasena += numeroAleatorio;
+    }
+    return contrasena;
+}
